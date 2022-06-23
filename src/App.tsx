@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 import { DEFAULT_CONFIG } from './app/constants';
 import { Home } from './components/Home';
-import { Config, useConfig } from './hooks/useConfig';
+import { useConfig } from './hooks/useConfig';
 
-export const configContext = createContext<Config>(DEFAULT_CONFIG);
+export const configContext = createContext(DEFAULT_CONFIG);
 
 export const App = () => {
   const config = useConfig();

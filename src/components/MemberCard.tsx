@@ -1,10 +1,8 @@
-import { useContext } from 'react';
-
-import { configContext } from '../App';
 import { Member } from '../app/types';
 import check from '../assets/check.png';
 import trash from '../assets/trash.png';
 import { useMemberCard } from '../hooks/useMemberCard';
+import { useMoney } from '../hooks/useMoney';
 import { Button } from './Button';
 import { Card } from './Card';
 import { Divider } from './Divider';
@@ -21,7 +19,7 @@ interface Props {
 }
 
 export const MemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOpen, removeMember }: Props) => {
-  const { formatMoney } = useContext(configContext);
+  const formatMoney = useMoney();
   const { name, contribution, avatarName, nameRef, contributionRef, changeName, changeContribution, save } =
     useMemberCard({ member, isOpen, firstOpen, updateMember, toggleIsOpen });
 

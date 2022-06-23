@@ -58,19 +58,6 @@ export const useMemberCard = ({ member, isOpen, firstOpen, updateMember, toggleI
     }
   }, [firstOpen, isOpen, member, name, avatarName, updateMember]);
 
-  /*   
-  Auto scroll at card focus
-  useEffect(() => {
-    const goToCard = () => {
-      setTimeout(() => {
-        const top = nameRef.current?.getBoundingClientRect().top
-        console.log({top});
-        window.scrollTo({ top: top });
-      }, 500);
-    };
-    if (isOpen) goToCard();
-  }, [isOpen]); */
-
   useEffect(() => {
     if (firstOpen) setCurrentMember({ ...member, name: '' });
   }, [firstOpen, member]);

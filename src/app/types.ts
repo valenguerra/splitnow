@@ -23,12 +23,6 @@ export interface Result {
   steps: Step[];
 }
 
-export interface formatMoneyProps {
-  amount: number;
-  langCode: string;
-  currency: string;
-}
-
 export interface CountryData {
   iso: string;
   name: string;

@@ -1,31 +1,28 @@
+import { Member } from '../app/types';
+import logo from '../assets/logo.png';
+import plus from '../assets/plus.png';
+import { useMoney } from '../hooks/useMoney';
+import { useSplitManager } from '../hooks/useSplitManager';
+import { Card } from './Card';
+import { Divider } from './Divider';
 import { Layout } from './Layout';
 import { MemberCard } from './MemberCard';
-import { Member } from '../app/types';
-import { Card } from './Card';
-
-import plus from '../assets/plus.png';
-import logo from '../assets/logo.png';
-import settings from '../assets/settings.png';
-import { Divider } from './Divider';
-import { useSplitManager } from '../hooks/useSplitManager';
-import { useContext } from 'react';
-import { configContext } from '../App';
 import { Step } from './Step';
 import { LightText, Title } from './Text';
 
 const INITIAL: Member[] = [{ id: 1, name: 'Roberto', contribution: 1500 }];
 
 export const Home = () => {
-  const { formatMoney } = useContext(configContext);
+  const formatMoney = useMoney();
   const { members, memberCardOpen, result, updateMember, removeMember, addMember, toggleMemberCardOpen } =
     useSplitManager(INITIAL);
+
   return (
     <Layout>
       <div className="flex w-full flex-col gap-4">
         <div className="flex w-full items-center gap-2">
           <img src={logo} alt="split money" className="h-12" />
           <h1 className="flex-1 text-3xl font-bold">split10.com</h1>
-          <img src={settings} alt="settings" />
         </div>
         <p className="self-start">La forma más simple de dividir gastos entre amigos!</p>
       </div>

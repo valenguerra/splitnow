@@ -1,15 +1,14 @@
 import { Step as StepType } from '../app/types';
 import { MemberName } from './MemberName';
 import smallRight from '../assets/small_right.png';
-import { useContext } from 'react';
-import { configContext } from '../App';
+import { useMoney } from '../hooks/useMoney';
 
 interface Props {
   step: StepType;
 }
 
 export const Step = ({ step }: Props) => {
-  const { formatMoney } = useContext(configContext);
+  const formatMoney = useMoney();
   const { index, from, to, amount } = step;
 
   return (

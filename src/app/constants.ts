@@ -1,5 +1,16 @@
 import { Config } from '../hooks/useConfig';
 
+export const LANGUAGES = ['en', 'es'];
+
+export const CURRENCIES = [
+  { name: 'USD', symbol: '$' },
+  { name: 'CNY', symbol: '¥' },
+  { name: 'EUR', symbol: '€' },
+  { name: 'SEK', symbol: 'Kr' },
+  { name: 'CHF', symbol: 'Fr' },
+  { name: 'KRW', symbol: '₩' },
+];
+
 export const VALENTINO_GUERRA_URL = '';
 
 type Pair = [string, string];
@@ -52,5 +63,9 @@ export const AVATARS: Pair[] = [
 ];
 
 export const DEFAULT_CONFIG: Config = {
-  formatMoney: (_) => {},
+  data: {
+    language: LANGUAGES[0],
+    currency: CURRENCIES[0],
+  },
+  updateData: (ud) => {},
 };

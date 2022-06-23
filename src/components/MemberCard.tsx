@@ -1,15 +1,15 @@
-import { Member } from "../app/types";
-import { Card } from "./Card";
-import { Divider } from "./Divider";
-import { Input } from "./Input";
-import { Button } from "./Button";
-import { useContext } from "react";
-import { MemberName } from "./MemberName";
+import { useContext } from 'react';
 
-import trash from "../assets/trash.png";
-import check from "../assets/check.png";
-import { configContext } from "../App";
-import { useMemberCard } from "../hooks/useMemberCard";
+import { configContext } from '../App';
+import { Member } from '../app/types';
+import check from '../assets/check.png';
+import trash from '../assets/trash.png';
+import { useMemberCard } from '../hooks/useMemberCard';
+import { Button } from './Button';
+import { Card } from './Card';
+import { Divider } from './Divider';
+import { Input } from './Input';
+import { MemberName } from './MemberName';
 
 interface Props {
   member: Member;
@@ -22,17 +22,8 @@ interface Props {
 
 export const MemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOpen, removeMember }: Props) => {
   const { formatMoney } = useContext(configContext);
-  
-  const {
-    name, 
-    contribution,
-    avatarName,
-    nameRef,
-    contributionRef, 
-    changeName,
-    changeContribution,
-    save
-  } = useMemberCard({member, isOpen, firstOpen, updateMember, toggleIsOpen });
+  const { name, contribution, avatarName, nameRef, contributionRef, changeName, changeContribution, save } =
+    useMemberCard({ member, isOpen, firstOpen, updateMember, toggleIsOpen });
 
   return (
     <Card onClick={isOpen ? undefined : toggleIsOpen}>
@@ -53,7 +44,9 @@ export const MemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOp
               placeholder="0.00"
               className="w-1/3"
               type="number"
-              value={contribution === 0 || !contribution ? "" : contribution}
+              max="100"
+              maxLength={12}
+              value={contribution === 0 || !contribution ? '' : contribution}
               onChange={(v) => changeContribution(parseFloat(v))}
               onEnter={save}
             />

@@ -1,5 +1,5 @@
-import { AVATARS } from "./constants";
-import { formatMoneyProps, Member, Result, Step } from "./types";
+import { AVATARS } from './constants';
+import { formatMoneyProps, Member, Result, Step } from './types';
 
 const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
@@ -18,7 +18,7 @@ export const hasMostlyZeros = (list: number[]) => list.filter((e) => e !== 0).le
 export const fixFloat = (n: number) => parseFloat(n.toFixed(2));
 
 export const formatMoney = ({ amount, langCode, currency }: formatMoneyProps) => {
-  return Intl.NumberFormat(langCode, { style: "currency", currency }).format(amount);
+  return Intl.NumberFormat(langCode, { style: 'currency', currency }).format(amount);
 };
 
 export const getIndexOfMaxAndMin = (list: number[]) => {
@@ -52,7 +52,7 @@ export const getSplitResult = (data: Member[]): Result => {
     debtList[max] = res > 0 ? res : 0;
 
     const amount = fixFloat(maxVal - debtList[max]);
-    steps.push({ from: data[max], to: data[min], amount });
+    steps.push({ index: steps.length + 1, from: data[max], to: data[min], amount });
   }
 
   return { total: fixFloat(total), average: fixFloat(average), steps };

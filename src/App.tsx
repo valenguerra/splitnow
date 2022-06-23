@@ -1,9 +1,8 @@
-import { createContext } from "react"
-import { DEFAULT_CONFIG } from "./app/constants";
-import { Config } from "./app/types";
-import { Home } from "./components/Home"
-import { useConfig } from "./hooks/useConfig";
- 
+import { createContext } from 'react';
+import { DEFAULT_CONFIG } from './app/constants';
+import { Home } from './components/Home';
+import { Config, useConfig } from './hooks/useConfig';
+
 export const configContext = createContext<Config>(DEFAULT_CONFIG);
 
 export const App = () => {
@@ -11,7 +10,7 @@ export const App = () => {
 
   return (
     <configContext.Provider value={config}>
-      <Home/>
+      <Home />
     </configContext.Provider>
-  )
-}
+  );
+};

@@ -1,25 +1,24 @@
-import { Layout } from "./Layout";
-import { MemberCard } from "./MemberCard";
-import { Member } from "../app/types";
-import { Card } from "./Card";
+import { Layout } from './Layout';
+import { MemberCard } from './MemberCard';
+import { Member } from '../app/types';
+import { Card } from './Card';
 
-import plus from "../assets/plus.png";
-import logo from "../assets/logo.png";
-import smallRight from "../assets/small_right.png";
-import settings from "../assets/settings.png";
-import { Divider } from "./Divider";
-import { MemberName } from "./MemberName";
-import { useSplitManager } from "../hooks/useSplitManager";
-import { useContext } from "react";
-import { configContext } from "../App";
+import plus from '../assets/plus.png';
+import logo from '../assets/logo.png';
+import settings from '../assets/settings.png';
+import { Divider } from './Divider';
+import { useSplitManager } from '../hooks/useSplitManager';
+import { useContext } from 'react';
+import { configContext } from '../App';
+import { Step } from './Step';
+import { LightText, Title } from './Text';
 
-const INITIAL: Member[] = [{ id: 1, name: "Roberto", contribution: 1500 }];
+const INITIAL: Member[] = [{ id: 1, name: 'Roberto', contribution: 1500 }];
 
 export const Home = () => {
   const { formatMoney } = useContext(configContext);
   const { members, memberCardOpen, result, updateMember, removeMember, addMember, toggleMemberCardOpen } =
     useSplitManager(INITIAL);
-
   return (
     <Layout>
       <div className="flex w-full flex-col gap-4">
@@ -56,29 +55,19 @@ export const Home = () => {
           <Card className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold">Total</h2>
+                <Title>Total</Title>
                 <span className="text-xl font-light">{formatMoney(result.total)}</span>
               </div>
               <div className="flex items-center justify-between">
-                <h3 className="text-md font-light text-slate-500">Cada uno paga</h3>
-                <span className="text-md font-light text-slate-500">{formatMoney(result.average)}</span>
+                <LightText>Cada uno paga</LightText>
+                <LightText>{formatMoney(result.average)}</LightText>
               </div>
             </div>
             <Divider />
-            <span className="text-md font-light text-slate-500">Pasos para repartir</span>
-            {result.steps.map((step, i) => {
-              return (
-                <div key={i} className="flex items-center justify-between">
-                  <div className="flex flex-1 items-center gap-3">
-                    <span className="text-md font-light text-slate-500">{i + 1}.</span>
-                    <MemberName small member={step.from} />
-                    <img src={smallRight} alt="arrow right" className="h-4" />
-                    <MemberName small member={step.to} />
-                  </div>
-                  <span className="text-md font-light">{formatMoney(step.amount)}</span>
-                </div>
-              );
-            })}
+            <LightText>Pasos para repartir</LightText>
+            {result.steps.map((step) => (
+              <Step step={step} key={step.index} />
+            ))}
           </Card>
         </section>
       )}

@@ -11,6 +11,7 @@ export interface Member {
 }
 
 export interface Step {
+  index: number;
   from: Member;
   to: Member;
   amount: number;
@@ -28,10 +29,17 @@ export interface formatMoneyProps {
   currency: string;
 }
 
-export interface Config {
-  langCode: string;
+export interface CountryData {
+  iso: string;
+  name: string;
   currency: string;
-  setLangCode: (langCode: string) => any;
-  setCurrency: (currency: string) => any;
-  formatMoney: (amount: number) => any;
+  langCode: string;
+}
+
+export interface RawCountryDataObject {
+  [key: string]: {
+    native: string;
+    currency: string[];
+    languages: string[];
+  };
 }

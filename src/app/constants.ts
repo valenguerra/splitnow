@@ -1,6 +1,8 @@
 export const LANGUAGES = ['en', 'es'];
 
-export const VALENTINO_GUERRA_URL = '';
+export const VALENTINO_GUERRA_URL = 'https://valenguerra.github.io/valenguerra/';
+
+export const DONATIONS_URL = 'https://www.buymeacoffee.com/valenwerra';
 
 type Pair = [string, string];
 

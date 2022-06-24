@@ -10,6 +10,7 @@ import { Layout } from './Layout';
 import { MemberCard } from './MemberCard';
 import { Step } from './Step';
 import { LightText, Title } from './Text';
+import { SmallButton } from './SmallButton';
 
 export const Home = () => {
   const { t, i18n } = useTranslation('global');
@@ -26,14 +27,9 @@ export const Home = () => {
     <Layout>
       <header className="flex w-full flex-col gap-4">
         <div className="flex w-full items-center">
-          <h1 className="text-3xl font-bold">split10</h1>
-          <span className="flex-1 text-3xl text-slate-400 font-light">.com</span>
-          <span
-            className="text-base font-medium border border-slate-300 px-3 py-0.5 rounded cursor-pointer select-none md:hover:bg-slate-200"
-            onClick={toggleLanguage}
-          >
-            {i18n.language.toUpperCase()}
-          </span>
+          <h1 className="text-3xl font-bold">splitnow</h1>
+          <span className="flex-1 text-3xl text-slate-400 font-light">.app</span>
+          <SmallButton onClick={toggleLanguage}>{i18n.language.toUpperCase()}</SmallButton>
         </div>
         <p className="self-start">
           {t('header.subtitle')}

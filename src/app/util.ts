@@ -17,13 +17,8 @@ export const hasMostlyZeros = (list: number[]) => list.filter((e) => e !== 0).le
 
 export const fixFloat = (n: number) => parseFloat(n.toFixed(2));
 
-interface formatMoneyProps {
-  amount: number;
-  currency: string;
-}
-
-export const formatMoney = ({ amount, currency }: formatMoneyProps) => {
-  const res = new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(amount);
+export const formatMoney = (amount: number) => {
+  const res = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
   return res;
 };
 

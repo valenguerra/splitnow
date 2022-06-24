@@ -1,0 +1,13 @@
+{
+  "header": {
+    "subtitle": "¡La forma más simple de dividir gastos entre amigos!"
+  },
+  "members": {
+    "example": "Juan"
+  },
+  "result": {
+    "total": "Total",
+    "each": "Cada uno paga",
+    "steps": "Pasos para repartir"
+  }
+}

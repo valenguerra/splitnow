@@ -1,8 +1,8 @@
 import { Member } from '../app/types';
+import { formatMoney } from '../app/util';
 import check from '../assets/check.png';
 import trash from '../assets/trash.png';
 import { useMemberCard } from '../hooks/useMemberCard';
-import { useMoney } from '../hooks/useMoney';
 import { Button } from './Button';
 import { Card } from './Card';
 import { Divider } from './Divider';
@@ -13,13 +13,21 @@ interface Props {
   member: Member;
   isOpen: boolean;
   firstOpen: boolean;
+  isTheOnlyMember?: boolean;
   toggleIsOpen: () => any;
   updateMember: (member: Member) => any;
   removeMember: (id: number) => any;
 }
 
-export const MemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOpen, removeMember }: Props) => {
-  const formatMoney = useMoney();
+export const MemberCard = ({
+  member,
+  isOpen,
+  firstOpen,
+  updateMember,
+  toggleIsOpen,
+  removeMember,
+  isTheOnlyMember,
+}: Props) => {
   const { name, contribution, avatarName, nameRef, contributionRef, changeName, changeContribution, save } =
     useMemberCard({ member, isOpen, firstOpen, updateMember, toggleIsOpen });
 
@@ -51,14 +59,16 @@ export const MemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOp
           </div>
           <Divider />
           <div className="flex w-full items-center gap-3">
-            <Button
-              onClick={() => {
-                removeMember(member.id);
-                toggleIsOpen();
-              }}
-            >
-              <img src={trash} alt="trash" className="h-5" />
-            </Button>
+            {!isTheOnlyMember && (
+              <Button
+                onClick={() => {
+                  removeMember(member.id);
+                  toggleIsOpen();
+                }}
+              >
+                <img src={trash} alt="trash" className="h-5" />
+              </Button>
+            )}
             <Button onClick={save}>
               <img src={check} alt="check" className="h-5" />
             </Button>

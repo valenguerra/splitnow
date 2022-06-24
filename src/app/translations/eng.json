@@ -1,0 +1,13 @@
+{
+  "header": {
+    "subtitle": "The simplest way to split expenses with friends!"
+  },
+  "members": {
+    "example": "John"
+  },
+  "result": {
+    "total": "Total",
+    "each": "Each one pays",
+    "steps": "Steps for distribution"
+  }
+}

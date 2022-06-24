@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { AVATARS } from "../app/constants";
-import { Member, Result } from "../app/types";
-import { getSplitResult, getTotal, getUniqueId } from "../app/util";
+import { useEffect, useState } from 'react';
+import { AVATARS } from '../app/constants';
+import { Member, Result } from '../app/types';
+import { getSplitResult, getTotal, getUniqueId } from '../app/util';
 
 interface MemberCardOpenData {
   id: number;
@@ -14,21 +14,21 @@ export const useSplitManager = (initialMembers: Member[]) => {
   const [result, setResult] = useState<Result | null>(null);
 
   useEffect(() => {
-    const contributionList = members.map(m => m.contribution);
+    const contributionList = members.map((m) => m.contribution);
     if (members.length > 1 && getTotal(contributionList) >= 1) {
       setResult(null);
       const res = getSplitResult(members);
-      console.log("result", res);
+      console.log('result', res);
       setResult(res);
     } else {
       setResult(null);
     }
   }, [members, setResult]);
-  
-  const toggleMemberCardOpen = (id: number) =>{
+
+  const toggleMemberCardOpen = (id: number) => {
     setMemberCardOpen(memberCardOpen?.id === id ? null : { id });
-  }
-  
+  };
+
   const updateMember = (member: Member) => {
     let copy = JSON.parse(JSON.stringify(members)) as Member[];
     copy = copy.map((m) => (m.id === member.id ? member : m));
@@ -50,7 +50,6 @@ export const useSplitManager = (initialMembers: Member[]) => {
     setMembers([...members, newMember]);
     setMemberCardOpen({ id: newMember.id, firstOpen: true });
   };
-
 
   return {
     members,

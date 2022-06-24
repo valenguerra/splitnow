@@ -1,14 +1,13 @@
 import { Step as StepType } from '../app/types';
 import { MemberName } from './MemberName';
 import smallRight from '../assets/small_right.png';
-import { useMoney } from '../hooks/useMoney';
+import { formatMoney } from '../app/util';
 
 interface Props {
   step: StepType;
 }
 
 export const Step = ({ step }: Props) => {
-  const formatMoney = useMoney();
   const { index, from, to, amount } = step;
 
   return (

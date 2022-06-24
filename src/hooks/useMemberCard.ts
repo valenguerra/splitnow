@@ -14,7 +14,7 @@ interface Props {
 export const useMemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOpen }: Props) => {
   const [currentMember, setCurrentMember] = useState(() => Object.assign({}, member));
   const { id, name, contribution } = currentMember;
-  const avatarName = AVATARS[id - 1][1];
+  const avatarName = AVATARS[id - 1][0];
   const nameRef = useRef<HTMLInputElement>(null);
   const contributionRef = useRef<HTMLInputElement>(null);
 

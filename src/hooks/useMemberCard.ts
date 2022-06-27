@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { AVATARS } from '../app/constants';
 import { Member } from '../app/types';
@@ -12,9 +13,11 @@ interface Props {
 }
 
 export const useMemberCard = ({ member, isOpen, firstOpen, updateMember, toggleIsOpen }: Props) => {
+  const { i18n } = useTranslation('global');
   const [currentMember, setCurrentMember] = useState(() => Object.assign({}, member));
   const { id, name, contribution } = currentMember;
-  const avatarName = AVATARS[id - 1][0];
+  const langIndex = i18n.language === 'esp' ? 1 : 0;
+  const avatarName = AVATARS[id - 1][langIndex];
   const nameRef = useRef<HTMLInputElement>(null);
   const contributionRef = useRef<HTMLInputElement>(null);
 

@@ -1,4 +1,4 @@
-import { forwardRef, HTMLInputTypeAttribute } from 'react';
+import { forwardRef, HTMLInputTypeAttribute, KeyboardEvent } from 'react';
 
 interface Props {
   type?: HTMLInputTypeAttribute;
@@ -18,22 +18,32 @@ interface Props {
 
 export const Input = forwardRef<HTMLInputElement, Props>(
   ({ className, prefix, onEnter, onChange, onKey, ...rest }, ref) => {
+    const onKeyDow = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        onEnter && onEnter(e.currentTarget.value);
+      } else {
+        onKey && onKey(e.key);
+      }
+    };
+
     return (
       <div className={`relative flex h-10 items-center gap-2 rounded bg-gray-200 ${className}`}>
         {prefix && <div className="absolute pl-3">{prefix}</div>}
         <input
           ref={ref}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              onEnter && onEnter(e.currentTarget.value);
-            } else {
-              onKey && onKey(e.key);
-            }
-          }}
+          autoComplete="off"
+          onKeyDown={onKeyDow}
           onChange={(e) => onChange && onChange(e.target.value)}
-          className={`h-full w-full ${
-            prefix ? 'px-7' : 'px-3'
-          } rounded border-2 border-gray-200 bg-transparent outline-none focus:border-slate-300`}
+          className={`
+            h-full w-full
+            ${prefix ? 'px-7' : 'px-3'}
+            rounded
+            border-2
+            border-gray-200
+            bg-transparent
+            outline-none
+            focus:border-slate-300
+          `}
           {...rest}
         />
       </div>

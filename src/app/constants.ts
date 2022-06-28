@@ -52,3 +52,5 @@ export const AVATARS: Pair[] = [
   ['Whale', 'Ballena'],
   ['Ant', 'Hormiguita'],
 ];
+
+export const ENDS_WITH_A_DOT = /.*\.$/;

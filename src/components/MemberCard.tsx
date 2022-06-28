@@ -8,6 +8,7 @@ import { Input } from './Input';
 import { MemberName } from './MemberName';
 import trash from '../assets/trash.svg';
 import check from '../assets/check.svg';
+import { InputMoney } from './InputMoney';
 
 interface Props {
   member: Member;
@@ -42,17 +43,14 @@ export const MemberCard = ({
               value={name}
               maxLength={24}
               placeholder={avatarName}
-              onChange={(v) => changeName(v)}
+              onChange={changeName}
               onEnter={() => contributionRef.current?.focus()}
             />
-            <Input
+            <InputMoney
               ref={contributionRef}
               placeholder="0.00"
               className="w-1/3"
-              type="number"
-              max="100"
-              maxLength={12}
-              value={contribution === 0 || !contribution ? '' : contribution}
+              value={contribution.toString()}
               onChange={(v) => changeContribution(parseFloat(v))}
               onEnter={save}
             />

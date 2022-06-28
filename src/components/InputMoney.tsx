@@ -1,35 +1,43 @@
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
+import { ENDS_WITH_A_DOT } from '../app/constants';
+import { Input } from './Input';
 
 interface Props {
   className?: string;
   placeholder?: string;
-  value: number | undefined;
-  min?: string;
-  max?: string;
-  step?: string;
+  value: string | undefined;
   onEnter?: (value: string) => any;
   onChange?: (value: string) => any;
   onKey?: (key: string) => any;
 }
 
-export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ className, max, min, onEnter, onChange, onKey, ...rest }, ref) => {
-    return (
-      <div className={`relative flex h-10 items-center gap-2 rounded bg-gray-200 ${className}`}>
-        <input
-          ref={ref}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              onEnter && onEnter(e.currentTarget.value);
-            } else {
-              onKey && onKey(e.key);
-            }
-          }}
-          onChange={(e) => onChange && onChange(e.target.value)}
-          className={`h-full w-full px-7 rounded border-2 border-gray-200 bg-transparent outline-none focus:border-slate-300`}
-          {...rest}
-        />
-      </div>
-    );
-  }
-);
+const MIN = 0;
+const MAX = 9999999;
+
+export const InputMoney = forwardRef<HTMLInputElement, Props>(({ onChange, onEnter, value, ...rest }, ref) => {
+  const [hangingDot, setHangingDot] = useState<boolean>(false);
+
+  const handleOnChange = (value: string) => {
+    const endsWithADot = value.match(ENDS_WITH_A_DOT) ? true : false;
+    setHangingDot(endsWithADot);
+
+    const number = parseFloat(value) ?? 0;
+    if (!onChange || number < MIN || number > MAX) return;
+    onChange(number.toString());
+  };
+
+  const handleOnEnter = (value: string) => {
+    const number = parseFloat(value) ?? 0;
+    if (onEnter) onEnter(number.toString());
+  };
+
+  return (
+    <Input
+      ref={ref}
+      onChange={handleOnChange}
+      onEnter={handleOnEnter}
+      value={hangingDot ? value + '.' : value}
+      {...rest}
+    />
+  );
+});

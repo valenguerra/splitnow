@@ -1,7 +1,7 @@
 import { Step as StepType } from '../app/types';
 import { MemberName } from './MemberName';
-import smallRight from '../assets/small_right.png';
 import { formatMoney } from '../app/util';
+import smallRight from '../assets/small-right.svg';
 
 interface Props {
   step: StepType;
@@ -17,7 +17,7 @@ export const Step = ({ step }: Props) => {
           {index}.
         </span>
         <MemberName small member={from} />
-        <img src={smallRight} alt="arrow right" className="h-4" />
+        <img src={smallRight} alt="right arrow" className="h-5" />
         <MemberName small member={to} />
       </div>
       <span className="text-md font-light">{formatMoney(amount)}</span>

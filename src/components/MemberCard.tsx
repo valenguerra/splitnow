@@ -1,13 +1,13 @@
 import { Member } from '../app/types';
 import { formatMoney } from '../app/util';
-import check from '../assets/check.png';
-import trash from '../assets/trash.png';
 import { useMemberCard } from '../hooks/useMemberCard';
 import { Button } from './Button';
 import { Card } from './Card';
 import { Divider } from './Divider';
 import { Input } from './Input';
 import { MemberName } from './MemberName';
+import trash from '../assets/trash.svg';
+import check from '../assets/check.svg';
 
 interface Props {
   member: Member;

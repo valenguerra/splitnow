@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Member } from '../app/types';
 import { formatMoney, getUniqueId } from '../app/util';
-import plus from '../assets/plus.png';
 import money from '../assets/money.png';
 import { useSplitManager } from '../hooks/useSplitManager';
 import { Card } from './Card';
@@ -11,6 +10,7 @@ import { MemberCard } from './MemberCard';
 import { Step } from './Step';
 import { LightText, Title } from './Text';
 import { SmallButton } from './SmallButton';
+import plus from '../assets/plus.svg';
 
 export const Home = () => {
   const { t, i18n } = useTranslation('global');
@@ -29,7 +29,10 @@ export const Home = () => {
         <div className="flex w-full items-center">
           <h1 className="text-3xl font-bold">splitnow</h1>
           <span className="flex-1 text-3xl text-slate-400 font-light">.app</span>
-          <SmallButton onClick={toggleLanguage}>{i18n.language.toUpperCase()}</SmallButton>
+          <div className="flex gap-2">
+            <SmallButton onClick={toggleLanguage}>{i18n.language.toUpperCase()}</SmallButton>
+            <SmallButton onClick={() => {}}>?</SmallButton>
+          </div>
         </div>
         <p className="self-start">
           {t('header.subtitle')}
@@ -54,7 +57,7 @@ export const Home = () => {
           })}
         {memberCardOpen === null && members.length < 44 && (
           <Card onClick={addMember} className="flex w-32 justify-center self-center">
-            <img src={plus} alt="add" className="h-6" />
+            <img src={plus} alt="plus" />
           </Card>
         )}
       </section>

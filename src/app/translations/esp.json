@@ -9,5 +9,20 @@
     "total": "Total",
     "each": "Cada uno paga",
     "steps": "Pasos para repartir"
+  },
+  "help": {
+    "when": {
+      "title": "¿Cuando usar?",
+      "p1": "Imagina que invitas amigos a casa y cada uno contribuye comprando algo distinto. Uno compra la pizza, otro trae una cervezas y otro el postre, mientras que el resto no trae nada.",
+      "p2": "Al final de la noche quieren dividir todos los gastos de forma equitativa, pero ninguno de tus amigos es experto en matemáticas. Hora de usar"
+    },
+    "how": {
+      "title": "¿Cómo funciona?",
+      "list": [
+        "Añade a tus amigos, especificando cuánto gastó cada uno.",
+        "Nuestro alogoritmo hará los calculos y te mostrará el total gastado junto con los pasos para repartir el dinero equitativamente.",
+        "Eso es todo! Ahora ya sabes como resolver estas situaciones."
+      ]
+    }
   }
 }

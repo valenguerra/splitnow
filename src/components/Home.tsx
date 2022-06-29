@@ -11,9 +11,12 @@ import { Step } from './Step';
 import { LightText, Title } from './Text';
 import { SmallButton } from './SmallButton';
 import plus from '../assets/plus.svg';
+import { useState } from 'react';
+import { HelpModal } from './HelpModal';
 
 export const Home = () => {
   const { t, i18n } = useTranslation('global');
+  const [showingHelpModal, setShowingHelpModal] = useState(false);
 
   const INITIAL: Member[] = [{ id: getUniqueId([]), name: t('members.example'), contribution: 650 }];
   const { members, memberCardOpen, result, updateMember, removeMember, addMember, toggleMemberCardOpen } =
@@ -25,13 +28,14 @@ export const Home = () => {
 
   return (
     <Layout>
+      <HelpModal open={showingHelpModal} onClose={() => setShowingHelpModal(false)} />
       <header className="flex w-full flex-col gap-4">
         <div className="flex w-full items-center">
           <h1 className="text-3xl font-bold">splitnow</h1>
           <span className="flex-1 text-3xl text-slate-400 font-light">.app</span>
           <div className="flex gap-2">
             <SmallButton onClick={toggleLanguage}>{i18n.language.toUpperCase()}</SmallButton>
-            <SmallButton onClick={() => {}}>?</SmallButton>
+            <SmallButton onClick={() => setShowingHelpModal(true)}>?</SmallButton>
           </div>
         </div>
         <p className="self-start">

@@ -9,5 +9,20 @@
     "total": "Total",
     "each": "Each one pays",
     "steps": "Steps for distribution"
+  },
+  "help": {
+    "when": {
+      "title": "When to use it?",
+      "p1": "Imagine you are with friends and each one contributes money for different purposes. One buys the pizza, one buys the beers, one buys the birthday cake, while the rest don't buy anything.",
+      "p2": "How can you split the expenses evenly without a math degree? Just use"
+    },
+    "how": {
+      "title": "How does it work?",
+      "list": [
+        "Add your friends specifying how much each one spent.",
+        "It will automatically calculate the total and the steps necessary to distribute the money.",
+        "Thats all! Enjoy the rest of your life knowing how to deal with this situations."
+      ]
+    }
   }
 }

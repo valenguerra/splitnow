@@ -4,6 +4,8 @@ export const VALENTINO_GUERRA_URL = 'https://valenguerra.github.io/valenguerra/'
 
 export const DONATIONS_URL = 'https://www.buymeacoffee.com/valenwerra';
 
+export const GA_TRACK_ID = process.env.GA_TRACK_ID;
+
 type Pair = [string, string];
 
 export const AVATARS: Pair[] = [

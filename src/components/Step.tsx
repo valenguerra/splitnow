@@ -1,7 +1,7 @@
 import { Step as StepType } from '../app/types';
 import { MemberName } from './MemberName';
 import { formatMoney } from '../app/util';
-import smallRight from '../assets/small-right.svg';
+import smallRight from '../assets/small-right.png';
 
 interface Props {
   step: StepType;

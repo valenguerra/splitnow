@@ -10,7 +10,7 @@ import { MemberCard } from './MemberCard';
 import { Step } from './Step';
 import { LightText, Title } from './Text';
 import { SmallButton } from './SmallButton';
-import plus from '../assets/plus.svg';
+import plus from '../assets/plus.png';
 import { useState } from 'react';
 import { HelpModal } from './HelpModal';
 

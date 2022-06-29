@@ -6,8 +6,8 @@ import { Card } from './Card';
 import { Divider } from './Divider';
 import { Input } from './Input';
 import { MemberName } from './MemberName';
-import trash from '../assets/trash.svg';
-import check from '../assets/check.svg';
+import trash from '../assets/trash.png';
+import check from '../assets/check.png';
 import { InputMoney } from './InputMoney';
 
 interface Props {

@@ -1,7 +1,7 @@
 import { AVATARS } from './constants';
 import { Member, Result, Step } from './types';
 
-const getRandomInt = (min: number, max: number) => {
+export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -9,9 +9,15 @@ const getRandomInt = (min: number, max: number) => {
 
 export const aproxNumberToZero = (n: number) => (n < 0.15 && n > -0.15 ? 0 : n);
 
-export const getTotal = (list: number[]) => list.reduce((t, item) => (t += item));
+export const getTotal = (list: number[]) => {
+  if (list.length === 0) return 0;
+  return list.reduce((t, item) => (t += item));
+};
 
-export const getAverage = (list: number[]) => getTotal(list) / list.length;
+export const getAverage = (list: number[]) => {
+  if (list.length === 0) return 0;
+  return getTotal(list) / list.length;
+};
 
 export const hasMostlyZeros = (list: number[]) => list.filter((e) => e !== 0).length <= 1;
 
@@ -23,20 +29,28 @@ export const formatMoney = (amount: number) => {
 };
 
 export const getIndexOfMaxAndMin = (list: number[]) => {
+  if (list.length === 0) return;
   const max = list.indexOf(Math.max(...list));
   const min = list.indexOf(Math.min(...list));
   return { max, min };
 };
 
-export const getSplitResult = (data: Member[]): Result => {
-  let list = [...data];
+export const getContributionTotal = (members: Member[]) => {
+  const amounts = members.map((e) => e.contribution) ?? [];
+  return getTotal(amounts);
+};
+
+export const getContributionAverage = (members: Member[]) => {
+  const amounts = members.map((e) => e.contribution) ?? [];
+  return getAverage(amounts);
+};
+
+export const getSplitSteps = (members: Member[]): Step[] => {
+  const average = getContributionAverage(members);
   const steps: Step[] = [];
-  const amounts = list.map((e) => e.contribution);
-  const total = getTotal(amounts);
-  const average = getAverage(amounts);
 
+  let list = [...members];
   let debtList = list.map((e) => fixFloat(average - e.contribution));
-
   let loops = 0;
 
   while (!hasMostlyZeros(debtList)) {
@@ -51,10 +65,10 @@ export const getSplitResult = (data: Member[]): Result => {
     debtList[max] = res > 0 ? res : 0;
 
     const amount = fixFloat(maxVal - debtList[max]);
-    steps.push({ index: steps.length + 1, from: data[max], to: data[min], amount });
+    steps.push({ index: steps.length + 1, from: members[max], to: members[min], amount });
   }
 
-  return { total: fixFloat(total), average: fixFloat(average), steps };
+  return steps;
 };
 
 export const getUniqueId = (idList: number[]) => {

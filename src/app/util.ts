@@ -1,5 +1,5 @@
 import { AVATARS } from './constants';
-import { Member, Result, Step } from './types';
+import { Member, Step } from './types';
 
 export const getRandomInt = (min: number, max: number) => {
   min = Math.ceil(min);
@@ -56,7 +56,7 @@ export const getSplitSteps = (members: Member[]): Step[] => {
   while (!hasMostlyZeros(debtList)) {
     if (loops > 50) break;
     loops++;
-    const { min, max } = getIndexOfMaxAndMin(debtList);
+    const { min, max } = getIndexOfMaxAndMin(debtList) ?? { min: 0, max: 0 };
     const minVal = debtList[min];
     const maxVal = debtList[max];
     const res = aproxNumberToZero(minVal + maxVal);

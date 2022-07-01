@@ -1,7 +1,8 @@
+import { getContributionTotal, getContributionAverage } from './../app/util';
 import { useEffect, useState } from 'react';
 import { AVATARS } from '../app/constants';
 import { Member, Result } from '../app/types';
-import { getSplitResult, getTotal, getUniqueId } from '../app/util';
+import { getSplitSteps, getTotal, getUniqueId } from '../app/util';
 
 interface MemberCardOpenData {
   id: number;
@@ -17,7 +18,11 @@ export const useSplitManager = (initialMembers: Member[]) => {
     const contributionList = members.map((m) => m.contribution);
     if (members.length > 1 && getTotal(contributionList) >= 1) {
       setResult(null);
-      const res = getSplitResult(members);
+      const res = {
+        total: getContributionTotal(members),
+        average: getContributionAverage(members),
+        steps: getSplitSteps(members),
+      };
       setResult(res);
     } else {
       setResult(null);

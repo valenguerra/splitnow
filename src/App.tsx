@@ -18,6 +18,7 @@ i18next.init({
 
 // Initialize Google Analytics
 ReactGA.initialize(GA_TRACK_ID);
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 export const App = () => {
   return (

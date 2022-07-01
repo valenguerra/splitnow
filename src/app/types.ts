@@ -1,3 +1,5 @@
+export type StringPair = [string, string];
+
 export interface ImageProps {
   src: string;
   alt: string;

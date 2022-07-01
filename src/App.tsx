@@ -16,7 +16,8 @@ i18next.init({
   },
 });
 
-if (GA_TRACK_ID) ReactGA.initialize(GA_TRACK_ID);
+// Initialize Google Analytics
+ReactGA.initialize(GA_TRACK_ID);
 
 export const App = () => {
   return (

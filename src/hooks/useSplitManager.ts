@@ -18,7 +18,6 @@ export const useSplitManager = (initialMembers: Member[]) => {
     if (members.length > 1 && getTotal(contributionList) >= 1) {
       setResult(null);
       const res = getSplitResult(members);
-      console.log('result', res);
       setResult(res);
     } else {
       setResult(null);

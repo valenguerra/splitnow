@@ -37,8 +37,6 @@ export const getSplitResult = (data: Member[]): Result => {
 
   let debtList = list.map((e) => fixFloat(average - e.contribution));
 
-  console.log(debtList);
-
   let loops = 0;
 
   while (!hasMostlyZeros(debtList)) {

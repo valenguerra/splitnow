@@ -1,4 +1,5 @@
 import i18next from 'i18next';
+import { useEffect } from 'react';
 import ReactGA from 'react-ga';
 import { I18nextProvider } from 'react-i18next';
 
@@ -18,9 +19,12 @@ i18next.init({
 
 // Initialize Google Analytics
 ReactGA.initialize(GA_TRACK_ID);
-ReactGA.pageview(window.location.pathname + window.location.search);
 
 export const App = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname);
+  }, []);
+
   return (
     <I18nextProvider i18n={i18next}>
       <Home />

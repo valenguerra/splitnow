@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Card } from './Card';
 import { Divider } from './Divider';
@@ -11,8 +12,11 @@ interface Props {
 export const HelpModal = ({ open, onClose }: Props) => {
   const { t } = useTranslation('global', { keyPrefix: 'help' });
 
-  if (!open) return <></>;
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : 'scroll';
+  }, [open]);
 
+  if (!open) return <></>;
   return (
     <div onClick={onClose} className="absolute bg-black bg-opacity-50 inset-0 cursor-pointer">
       <div className="max-w-2xl h-screen m-auto flex justify-center px-4">

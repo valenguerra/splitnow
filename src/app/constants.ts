@@ -2,7 +2,6 @@ import { StringPair } from './types';
 
 export const VALENTINO_GUERRA_URL = 'https://valenguerra.github.io/valenguerra/';
 export const DONATIONS_URL = 'https://www.buymeacoffee.com/valenwerra';
-export const GA_TRACK_ID = 'G-8SJCQHWMQQ';
 
 export const ENDS_WITH_A_DOT = /.*\.$/;
 

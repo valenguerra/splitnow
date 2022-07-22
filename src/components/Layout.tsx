@@ -17,7 +17,7 @@ export const Layout = ({ children }: Props) => {
         <a href={DONATIONS_URL} target="__blank">
           <SmallButton className="text-sm">
             Buy me a coffee
-            <img src={coffee} alt="coffee" className="ml-1 inline-flex h-5" />
+            <img src={coffee} alt="coffee" className="ml-1 inline-flex h-5 w-5" />
           </SmallButton>
         </a>
       </footer>

@@ -1,18 +1,19 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
 import { Member } from '../app/types';
 import { formatMoney, getUniqueId } from '../app/util';
 import money from '../assets/money.png';
+import plus from '../assets/plus.png';
 import { useSplitManager } from '../hooks/useSplitManager';
 import { Card } from './Card';
 import { Divider } from './Divider';
+import { HelpModal } from './HelpModal';
 import { Layout } from './Layout';
 import { MemberCard } from './MemberCard';
+import { SmallButton } from './SmallButton';
 import { Step } from './Step';
 import { LightText, Title } from './Text';
-import { SmallButton } from './SmallButton';
-import plus from '../assets/plus.png';
-import { useState } from 'react';
-import { HelpModal } from './HelpModal';
 
 export const Home = () => {
   const { t, i18n } = useTranslation('global');
@@ -40,7 +41,7 @@ export const Home = () => {
         </div>
         <p className="self-start">
           {t('header.subtitle')}
-          <img src={money} alt="money" className="ml-1 -mt-1 h-6 inline-flex" />
+          <img src={money} alt="money" className="ml-1 -mt-1 h-6 w-6 inline-flex" />
         </p>
       </header>
       <section className="flex flex-col gap-6">
@@ -61,7 +62,7 @@ export const Home = () => {
           })}
         {memberCardOpen === null && members.length < 44 && (
           <Card onClick={addMember} className="flex w-32 justify-center self-center">
-            <img src={plus} alt="plus" />
+            <img src={plus} alt="plus" className="w-6 h-6" />
           </Card>
         )}
       </section>

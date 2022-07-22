@@ -17,7 +17,7 @@ export const Step = ({ step }: Props) => {
           {index}.
         </span>
         <MemberName small member={from} />
-        <img src={smallRight} alt="right arrow" className="h-5" />
+        <img src={smallRight} alt="right arrow" className="h-5 w-5" />
         <MemberName small member={to} />
       </div>
       <span className="text-md font-light">{formatMoney(amount)}</span>

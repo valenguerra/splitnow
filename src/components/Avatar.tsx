@@ -98,7 +98,7 @@ interface Props {
 
 export const Avatar = ({ id, small = false }: Props) => {
   if (id >= 0 && id <= images.length) {
-    return <img src={images[id - 1]} alt={AVATARS[id - 1][0]} className={small ? 'h-4' : 'h-8'} />;
+    return <img src={images[id - 1]} alt={AVATARS[id - 1][0]} className={small ? 'h-4 w-4' : 'h-8 w-8'} />;
   }
   return <div className={`rounded-full bg-slate-200 ${small ? 'h-4 w-4' : 'h-8 w-8'}`} />;
 };

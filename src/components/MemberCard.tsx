@@ -64,11 +64,11 @@ export const MemberCard = ({
                   toggleIsOpen();
                 }}
               >
-                <img src={trash} alt="trash" className="h-5" />
+                <img src={trash} alt="trash" className="h-5 w-5" />
               </Button>
             )}
             <Button onClick={save}>
-              <img src={check} alt="check" className="h-5" />
+              <img src={check} alt="check" className="h-5 w-5" />
             </Button>
           </div>
         </div>
